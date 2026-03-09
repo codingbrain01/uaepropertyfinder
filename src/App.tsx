@@ -251,7 +251,7 @@ function App() {
       </footer>
 
       {/* WhatsApp Float */}
-      <a href={`https://wa.me/${WHATSAPP_NUMBER}?text=Hello%20I%20am%20interested%20in%20buying%20property%20in%20the%20UAE`}
+      <a href={`https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=Hello%20I%20am%20interested%20in%20buying%20property%20in%20the%20UAE`}
         target="_blank"
         rel="noreferrer"
         className="fixed right-5 bottom-5 bg-green-500 hover:bg-green-600 text-white px-5 py-4 rounded-full font-bold shadow-xl z-50 transition text-sm">
