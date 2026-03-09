@@ -16,6 +16,10 @@ function App() {
     alert('Thank you! We will contact you shortly.')
   }
 
+  const scrollTo = (id: string) => {
+    document.getElementById(id)?.scrollIntoView({ behavior: 'smooth' })
+  }
+
   return (
     <div className="font-serif bg-gray-50 text-gray-900">
 
@@ -24,8 +28,11 @@ function App() {
         <div className="max-w-6xl mx-auto px-5 py-4 flex justify-between items-center">
           <div className="text-xl md:text-2xl font-extrabold text-blue-600">UAE Property Finder</div>
           <nav className="hidden md:flex gap-6">
-            {[['#benefits','Why UAE'],['#locations','Top Areas'],['#types','Property Types'],['#faq','FAQ']].map(([href, label]) => (
-              <a key={href} href={href} className="text-gray-800 font-semibold text-sm hover:text-blue-600 transition">{label}</a>
+            {[['benefits','Why UAE'],['locations','Top Areas'],['types','Property Types'],['faq','FAQ']].map(([id, label]) => (
+              <button key={id} onClick={() => scrollTo(id)}
+                className="text-gray-800 font-semibold text-sm hover:text-blue-600 transition cursor-pointer bg-transparent border-none">
+                {label}
+              </button>
             ))}
           </nav>
         </div>
@@ -50,8 +57,14 @@ function App() {
               ))}
             </div>
             <div className="flex flex-wrap gap-3">
-              <a href="#lead-form" className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition">Get Property Options</a>
-              <a href="#locations" className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-xl font-bold transition">View Top Areas</a>
+              <button onClick={() => scrollTo('lead-form')}
+                className="bg-blue-600 hover:bg-blue-700 text-white px-6 py-3 rounded-xl font-bold transition cursor-pointer border-none">
+                Get Property Options
+              </button>
+              <button onClick={() => scrollTo('locations')}
+                className="border-2 border-white text-white hover:bg-white hover:text-blue-600 px-6 py-3 rounded-xl font-bold transition cursor-pointer bg-transparent">
+                View Top Areas
+              </button>
             </div>
           </div>
 
@@ -218,7 +231,10 @@ function App() {
           <div className="bg-gradient-to-br from-gray-900 to-gray-800 text-white p-10 md:p-16 rounded-3xl text-center">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Find Your UAE Property?</h2>
             <p className="text-white/80 text-base md:text-lg max-w-2xl mx-auto mb-8">Get handpicked options that match your budget, location, and goals.</p>
-            <a href="#lead-form" className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-base transition">Request Property Details</a>
+            <button onClick={() => scrollTo('lead-form')}
+              className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-bold text-base transition cursor-pointer border-none">
+              Request Property Details
+            </button>
           </div>
         </div>
       </section>
