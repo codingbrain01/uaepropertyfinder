@@ -59,7 +59,7 @@ function App() {
           <div id="lead-form" style={{ background: '#fff', color: '#1c2230', padding: 30, borderRadius: 18, boxShadow: '0 20px 45px rgba(0,0,0,0.18)' }}>
             <h3 style={{ fontSize: 26, marginBottom: 10, color: '#0d6efd' }}>Request Property Details</h3>
             <p style={{ color: '#606a7d', marginBottom: 20, fontSize: 15 }}>Fill out the form and get matched with properties based on your budget.</p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} autoComplete='off'>
               {[
                 { name: 'name', placeholder: 'Full Name', type: 'text' },
                 { name: 'email', placeholder: 'Email Address', type: 'email' },
