@@ -13,7 +13,20 @@ function App() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault()
-    alert('Thank you! We will contact you shortly.')
+
+    const message =
+      `Hello, I am interested in a property in the UAE.%0A%0A` +
+      `Name: ${formData.name}%0A` +
+      `Email: ${formData.email}%0A` +
+      `Phone: ${formData.phone}%0A` +
+      `Interest: ${formData.interest}%0A` +
+      `Budget: ${formData.budget}%0A` +
+      `Message: ${formData.message}`
+
+    window.open(
+      `https://api.whatsapp.com/send?phone=${WHATSAPP_NUMBER}&text=${message}`,
+      '_blank'
+    )
   }
 
   const scrollTo = (id: string) => {
@@ -28,7 +41,7 @@ function App() {
         <div className="max-w-6xl mx-auto px-5 py-4 flex justify-between items-center">
           <div className="text-xl md:text-2xl font-extrabold text-blue-600">UAE Property Finder</div>
           <nav className="hidden md:flex gap-6">
-            {[['benefits','Why UAE'],['locations','Top Areas'],['types','Property Types'],['faq','FAQ']].map(([id, label]) => (
+            {[['benefits', 'Why UAE'], ['locations', 'Top Areas'], ['types', 'Property Types'], ['faq', 'FAQ']].map(([id, label]) => (
               <button key={id} onClick={() => scrollTo(id)}
                 className="text-gray-800 font-semibold text-sm hover:text-blue-600 transition cursor-pointer bg-transparent border-none">
                 {label}
@@ -52,7 +65,7 @@ function App() {
               Explore premium apartments, villas, townhouses, and investment opportunities across the UAE.
             </p>
             <div className="flex flex-wrap gap-3 mb-7 text-sm text-white/90">
-              {['Exclusive listings','Expert local guidance','Investor-friendly opportunities','Flexible payment plans'].map(p => (
+              {['Exclusive listings', 'Expert local guidance', 'Investor-friendly opportunities', 'Flexible payment plans'].map(p => (
                 <span key={p}>✔ {p}</span>
               ))}
             </div>
@@ -85,12 +98,12 @@ function App() {
               <select name="interest" required onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm outline-none focus:border-blue-400 transition bg-white">
                 <option value="">I am interested in</option>
-                {['Buying a home','Investment property','Off-plan property','Ready property'].map(o => <option key={o}>{o}</option>)}
+                {['Buying a home', 'Investment property', 'Off-plan property', 'Ready property'].map(o => <option key={o}>{o}</option>)}
               </select>
               <select name="budget" required onChange={handleChange}
                 className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm outline-none focus:border-blue-400 transition bg-white">
                 <option value="">Select budget</option>
-                {['Under AED 500,000','AED 500,000 - AED 1,000,000','AED 1,000,000 - AED 3,000,000','AED 3,000,000+'].map(o => <option key={o}>{o}</option>)}
+                {['Under AED 500,000', 'AED 500,000 - AED 1,000,000', 'AED 1,000,000 - AED 3,000,000', 'AED 3,000,000+'].map(o => <option key={o}>{o}</option>)}
               </select>
               <textarea name="message" placeholder="Tell us what kind of property you are looking for"
                 onChange={handleChange} autoComplete="off"
@@ -161,9 +174,9 @@ function App() {
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {[
-              { title: 'Apartments', desc: 'Modern studios, 1-bedroom, 2-bedroom, and luxury penthouses in prime communities.', items: ['City living','High rental appeal','Premium amenities'] },
-              { title: 'Villas & Townhouses', desc: 'Spacious homes for families looking for privacy, comfort, and community living.', items: ['Gated communities','Private gardens','Family-friendly neighborhoods'] },
-              { title: 'Investment Properties', desc: 'Opportunities designed for buyers seeking income-producing or growth-focused real estate.', items: ['Off-plan projects','Ready-to-rent units','Flexible payment plans'] },
+              { title: 'Apartments', desc: 'Modern studios, 1-bedroom, 2-bedroom, and luxury penthouses in prime communities.', items: ['City living', 'High rental appeal', 'Premium amenities'] },
+              { title: 'Villas & Townhouses', desc: 'Spacious homes for families looking for privacy, comfort, and community living.', items: ['Gated communities', 'Private gardens', 'Family-friendly neighborhoods'] },
+              { title: 'Investment Properties', desc: 'Opportunities designed for buyers seeking income-producing or growth-focused real estate.', items: ['Off-plan projects', 'Ready-to-rent units', 'Flexible payment plans'] },
             ].map(p => (
               <div key={p.title} className="bg-white p-7 rounded-2xl border border-gray-100 shadow-sm">
                 <h3 className="text-xl font-bold mb-2">{p.title}</h3>
